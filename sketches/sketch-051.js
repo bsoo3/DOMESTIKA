@@ -3,7 +3,7 @@ const canvasSketch = require('canvas-sketch');
 const settings = {
     dimensions: [1080, 1080]
 };
-
+let manager;
 let text = 'A';
 let fontSize = 1200;
 let fontFamily = 'serif';
@@ -46,15 +46,18 @@ const sketch = () => {
 };
 
 const onKeyUp = (e) => {
-    text = e.key;
-}
+    text = e.key.toUpperCase();
+    manager.render();
+};
 
-//it writes down which key u pressed
 document.addEventListener('keyup', onKeyUp);
 
 
-canvasSketch(sketch, settings);
+const start = async() => {
+    manager = await canvasSketch(sketch, settings);
+};
 
+start();
 
 /*
 const url = 'https://picsum.photos/200';
