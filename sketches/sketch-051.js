@@ -45,4 +45,12 @@ const sketch = () => {
     };
 };
 
+const onKeyUp = (e) => {
+    text = e.key;
+}
+
+//it writes down which key u pressed
+document.addEventListener('keyup', onKeyUp);
+
+
 canvasSketch(sketch, settings);
