@@ -54,3 +54,34 @@ document.addEventListener('keyup', onKeyUp);
 
 
 canvasSketch(sketch, settings);
+
+
+/*
+const url = 'https://picsum.photos/200';
+
+const loadMeSomeImage = (url) => {
+    return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(img);
+        img.src = url;
+    });
+}
+
+const start = async() => {
+    const img = await loadMeSomeImage(url).then(img => {
+        console.log('image width', img.width);
+    });
+    console.log('this line');
+};
+
+
+
+//const start = () => {
+//loadMeSomeImage(url).then(img => {
+//console.log('image width', img.width);
+//});
+//console.log('this line');
+//};
+start();
+*/
