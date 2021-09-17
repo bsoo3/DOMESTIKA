@@ -26,36 +26,46 @@ const sketch = ({ context, width, height }) => {
 
 
     return ({ context, width, height }) => {
-        context.fillStyle = 'white';
-        context.fillRect(0, 0, width, height);
+        typeContext.fillStyle = 'black';
+        typeContext.fillRect(0, 0, cols, rows);
+
+        fontSize = cols;
 
 
-        context.fillStyle = 'black';
-        //context.font = fontSize + 'px ' + fontFamily;
-        context.font = `${fontSize}px ${fontFamily}`;
-        context.textBaseline = 'middle';
-        //context.textAlign = 'center';
+
+
+        typeContext.fillStyle = 'white';
+        typeContext.font = `${fontSize}px ${fontFamily}`;
+        typeContext.textBaseline = 'top';
 
         const text = 'A';
 
-        const metrics = context.measureText(text);
+        const metrics = typeContext.measureText(text);
         const mx = metrics.actualBoundingBoxLeft * -1;
         const my = metrics.actualBoundingBoxAscent * -1;
         const mw = metrics.actualBoundingBoxLeft + metrics.actualBoundingBoxRight;
         const mh = metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
 
-        const x = (width - mw) * 0.5 - mx;
-        const y = (height - mh) * 0.5 - my;
+        const x = (cols - mw) * 0.5 - mx;
+        const y = (rows - mh) * 0.5 - my;
 
 
-        context.save();
-        context.translate(x, y);
+        typeContext.save();
+        typeContext.translate(x, y);
 
-        context.beginPath();
-        context.rect(mx, my, mw, mh);
-        context.stroke();
-        context.fillText(text, 0, 0);
-        context.restore();
+        typeContext.beginPath();
+        typeContext.rect(mx, my, mw, mh);
+        typeContext.stroke();
+
+        typeContext.fillText(text, 0, 0);
+        typeContext.restore();
+
+
+        const typeData = typeContext.getImageData(0, 0, cols, rows);
+        console.log(typeData);
+
+
+        document.drawImage(typeCanvas, 0, 0);
 
     };
 };
