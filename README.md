@@ -8,4 +8,4 @@ install this in cmd for everything to work:
   -npm install canvas-sketch-util
   -npm i tweakpane
 
-have fun!
+have fun
